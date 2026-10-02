@@ -1,0 +1,19 @@
+upstream {{ domain_slug }}_backends {
+    least_conn;
+    server {{ backend_a_ip }}:3001 max_fails=2 fail_timeout=10s;
+    server {{ backend_b_ip }}:3002 max_fails=2 fail_timeout=10s;
+}
+
+server {
+    listen {{ https_port }} ssl;
+    server_name {{ domain }} api.{{ domain }};
+
+    ssl_certificate     {{ cert_path }};
+    ssl_certificate_key {{ key_path }};
+
+    location / {
+        proxy_pass http://{{ domain_slug }}_backends;
+        proxy_next_upstream error timeout http_502 http_503 http_504;
+        proxy_set_header Host $host;
+    }
+}
