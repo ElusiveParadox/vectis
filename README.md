@@ -160,7 +160,7 @@ Vectis utilizes explicit networking protocols for core traffic, control signalin
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-org/vectis.git
+   git clone https://github.com/ElusiveParadox/vectis.git
    cd vectis
    ```
 
