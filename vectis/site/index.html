@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectis demo site</title>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --fg:#e2e8f0; --mute:#94a3b8; --a:#2563eb; --b:#ea580c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,system-ui,sans-serif; background:var(--bg); color:var(--fg); }
+  header { padding:28px 20px; text-align:center; }
+  .badge { display:inline-block; padding:10px 40px; font-size:64px; font-weight:700; border-radius:18px; color:#fff; }
+  .A { background:var(--a); } .B { background:var(--b); }
+  main { max-width:720px; margin:0 auto; padding:0 20px 60px; }
+  .card { background:var(--card); border-radius:14px; padding:20px 24px; margin-top:18px; }
+  h2 { margin:0 0 10px; font-size:18px; }
+  p { color:var(--mute); line-height:1.55; margin:6px 0; }
+  table { width:100%; border-collapse:collapse; font-family:ui-monospace,Menlo,monospace; font-size:14px; }
+  td { padding:7px 4px; border-bottom:1px solid #334155; } td:first-child { color:var(--mute); width:42%; }
+  nav a { color:#7dd3fc; margin:0 10px; }
+</style></head>
+<body>
+<header>
+  <div class="badge __VECTIS_BACKEND__">Backend __VECTIS_BACKEND__</div>
+  <p>This page was served by <b>Backend __VECTIS_BACKEND__</b>. Reload: the load balancer may answer from the other one.</p>
+  <nav><a href="/">Home</a><a href="/about.html">How it works</a><a href="/api/status">/api/status</a><a href="/healthz">/healthz</a></nav>
+</header>
+<main>
+  <div class="card"><h2>This request</h2>
+    <table>
+      <tr><td>served by</td><td>Backend __VECTIS_BACKEND__</td></tr>
+      <tr><td>you asked for</td><td>__VECTIS_HOST__</td></tr>
+      <tr><td>your IP (as the LB saw it)</td><td>__VECTIS_CLIENT__</td></tr>
+      <tr><td>request id</td><td>__VECTIS_REQUEST_ID__</td></tr>
+    </table>
+    <p>Find this request id in <code>vectis trail</code> to see how DNS and the load balancer handled it.</p>
+  </div>
+</main>
+</body></html>
