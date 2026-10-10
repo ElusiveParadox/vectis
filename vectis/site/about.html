@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works</title>
+<style>body{font-family:-apple-system,system-ui,sans-serif;background:#0f172a;color:#e2e8f0;max-width:680px;margin:6vh auto;padding:0 20px;line-height:1.6}a{color:#7dd3fc}code{background:#1e293b;padding:2px 6px;border-radius:5px}</style></head>
+<body>
+<h1>How this page reached you</h1>
+<ol>
+  <li><b>DNS</b>: your Mac asked the Vectis DNS server where this name lives; it answered with the load balancer's IP.</li>
+  <li><b>Load balancer</b>: nginx accepted the HTTPS connection and chose a backend (least connections).</li>
+  <li><b>Backend __VECTIS_BACKEND__</b> sent this page (request <code>__VECTIS_REQUEST_ID__</code>).</li>
+</ol>
+<p>If a backend is down, nginx retries on the other one and you still get a page.</p>
+<p><a href="/">Back</a></p>
+</body></html>
