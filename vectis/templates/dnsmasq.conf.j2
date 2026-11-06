@@ -3,5 +3,5 @@ address=/api.{{ domain }}/{{ edge_ip }}
 {% if hosted_ip %}
 address=/hosted.{{ domain }}/{{ hosted_ip }}
 {% endif %}
-log-queries
+log-queries=extra
 log-facility={{ log_path }}
