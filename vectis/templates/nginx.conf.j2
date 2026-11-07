@@ -4,16 +4,36 @@ upstream {{ domain_slug }}_backends {
     server {{ backend_b_ip }}:3002 max_fails=2 fail_timeout=10s;
 }
 
+log_format vectis_trail 'rid=$request_id client=$remote_addr host=$host '
+                        'method=$request_method uri="$request_uri" status=$status '
+                        'upstream="$upstream_addr" ustatus="$upstream_status" '
+                        'urt="$upstream_response_time" rt=$request_time bytes=$body_bytes_sent';
+
 server {
     listen {{ https_port }} ssl;
-    server_name {{ domain }} api.{{ domain }};
+    server_name {{ domain }} app.{{ domain }} api.{{ domain }};
 
     ssl_certificate     {{ cert_path }};
     ssl_certificate_key {{ key_path }};
+
+    access_log {{ access_log }} vectis_trail;
+    error_log  {{ error_log }} warn;
+
+    location = /_edge/health {
+        access_log off;
+        default_type text/plain;
+        return 200 "edge ok\n";
+    }
 
     location / {
         proxy_pass http://{{ domain_slug }}_backends;
         proxy_next_upstream error timeout http_502 http_503 http_504;
         proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Request-ID $request_id;
+        add_header X-Request-ID $request_id always;
+        add_header X-Upstream $upstream_addr always;
     }
 }
