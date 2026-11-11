@@ -25,3 +25,8 @@ def spinner(message: str):
     kind = "line" if _PLAIN else "dots"
     with console.status(f"[{style}]{message}[/{style}]", spinner=kind):
         yield
+
+
+def format_status_badge(text: str, success: bool = True) -> str:
+    color = "green" if success else "red"
+    return f"[{color}][{text}][/{color}]"
