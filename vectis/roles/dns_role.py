@@ -19,6 +19,7 @@ from .base import Role, SetupResult
 TEMPLATE_DIR = Path(__file__).parent.parent / "templates"
 
 DNSMASQ_CONF = Path("/opt/homebrew/etc/dnsmasq.conf")
+DEFAULT_DNS_TIMEOUT = 5
 
 
 class DnsRole(Role):
@@ -63,7 +64,7 @@ class DnsRole(Role):
             try:
                 result = subprocess.run(
                     ["dig", "@127.0.0.1", f"app.{domain}", "+short"],
-                    capture_output=True, text=True, timeout=5,
+                    capture_output=True, text=True, timeout=DEFAULT_DNS_TIMEOUT,
                 )
                 checks["dns_resolves_app_domain"] = bool(result.stdout.strip())
             except subprocess.TimeoutExpired:
