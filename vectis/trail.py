@@ -395,3 +395,13 @@ def _loop(view: TrailView, dns_ip: str, seq: int, live: Live | None, get_status,
             show(live, get_status())
             last_status = time.monotonic()
         time.sleep(0.4)
+
+
+def status_color(code: int) -> str:
+    if code < 300:
+        return "green"
+    if code < 400:
+        return "blue"
+    if code < 500:
+        return "yellow"
+    return "red"
