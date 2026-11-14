@@ -26,6 +26,7 @@ from . import dashboard, netprobe, state, team_logs
 
 BACKEND_PORTS = {"backend_a": 3001, "backend_b": 3002}
 PROBE_INTERVAL_S = 5
+PROBE_MAX_RETRIES = 3
 
 
 def _pid_alive(pid: int | None) -> bool:
