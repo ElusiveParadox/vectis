@@ -105,3 +105,8 @@ def trust(domain: str) -> tuple[bool, str]:
         return True, f"{domain} is already trusted."
     ok = trust_locally(path)
     return ok, (f"{domain} is now trusted." if ok else "security add-trusted-cert failed -- see stderr above.")
+
+
+def set_key_permissions(path: Path) -> None:
+    if path.exists():
+        path.chmod(0o600)
