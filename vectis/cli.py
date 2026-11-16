@@ -270,7 +270,7 @@ def status() -> None:
 
 @app.command()
 def logs(team: bool = typer.Option(False, "--team", help="Tail the aggregated cross-machine log instead of just this machine's own services.")) -> None:
-    """Live multi-service log tail."""
+    """Live multi-service log tail across cluster nodes."""
     _logs_impl(team)
 
 
