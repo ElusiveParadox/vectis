@@ -94,3 +94,7 @@ def detect() -> NetInfo:
         if info:
             return info
     return _fallback_socket()
+
+
+def prioritize_interfaces(ifaces: list[str]) -> list[str]:
+    return sorted(ifaces, key=lambda x: (not x.startswith("en"), x))
