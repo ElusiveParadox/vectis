@@ -94,7 +94,7 @@ def _follow(name: str, path: Path, out: "queue.Queue[tuple[str, str]]", stop: th
             if line:
                 out.put((name, line.rstrip("\n")))
             else:
-                time.sleep(0.3)
+                time.sleep(0.25)
     except Exception as exc:  # noqa: BLE001 -- deliberately broad, see module docstring
         out.put((name, f"[log follower stopped: {exc}]"))
 
