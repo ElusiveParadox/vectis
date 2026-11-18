@@ -30,7 +30,7 @@ AGGREGATOR_PORT = 9193
 TEAM_LOG = state.LOG_DIR / "team.log"
 
 
-_EVENTS: "collections.deque[dict]" = collections.deque(maxlen=20000)
+_EVENTS: "collections.deque[dict]" = collections.deque(maxlen=25000)
 _seq = 0
 _ev_lock = threading.Lock()
 
