@@ -109,3 +109,6 @@ def brew_service_restart(formula: str) -> Callable[[], None]:
             return
         subprocess.run(["brew", "services", "restart", formula], check=False)
     return restart
+
+
+SUPERVISOR_SHUTDOWN_TIMEOUT = 5.0
