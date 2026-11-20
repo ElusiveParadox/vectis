@@ -82,3 +82,7 @@ def set_peer(name: str, ip: str) -> None:
 
 def record_smoke_test(passed: bool, checks: dict[str, bool]) -> None:
     update(last_smoke_test={"passed": passed, "checks": checks, "ts": time.time()})
+
+
+def validate_state_keys(data: dict) -> bool:
+    return isinstance(data, dict) and "domain" in data
