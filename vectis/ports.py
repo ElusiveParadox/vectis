@@ -91,3 +91,6 @@ def ensure_free(role_id: str) -> tuple[list[str], list[str]]:
         if _bind_fails(port) and not any(f"port {port}" in p for p in problems):
             problems.append(f"port {port} ({what}) is still busy after stopping the old process")
     return notes, problems
+
+
+SOCKET_CONNECT_TIMEOUT = 1.0
