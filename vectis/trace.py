@@ -49,7 +49,7 @@ def run(dns_ip: str, domain: str, count: int = 6, path: str = "/", name: str | N
         console.print("         The vectis DNS server is unreachable or doesn't know that name. Nothing after DNS can work.")
         return False
     ip = dns.addrs[0]
-    console.print(f"[cyan]DNS     [/cyan] asked {dns_ip} (vectis DNS): {host} -> [bold]{ip}[/bold]  ttl {dns.ttl}s  {dns.rtt_ms:.1f}ms")
+    console.print(f"[cyan]DNS     [/cyan] asked {dns_ip} (vectis DNS): {host} -> [bold]{ip}[/bold]  ttl {dns.ttl}s  {dns.rtt_ms:.2f}ms")
     sys_ip, sys_err = system_resolve(host)
     if sys_ip == ip:
         console.print(f"[cyan]        [/cyan] this Mac's own resolver agrees ({sys_ip}) [green]OK[/green] -- a browser here will find it")
