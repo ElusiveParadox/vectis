@@ -1,6 +1,6 @@
 [project]
 name = "vectis"
-version = "0.1.0"
+version = "0.1.1"
 description = "Role-based orchestration CLI for deploying and operating a private DNS, load-balanced edge, and backend network"
 requires-python = ">=3.11"
 dependencies = [
