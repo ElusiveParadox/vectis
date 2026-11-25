@@ -1,20 +1,4 @@
-"""Detect this machine's active LAN interface, IP, and MAC address.
 
-Primary path shells out to macOS tools (route/ifconfig), since that's
-the deployment target. A socket-based fallback covers machines where
-those calls fail or return nothing usable -- and is what actually gets
-exercised in non-macOS dev/test environments, including the one this
-file was tested in.
-
-[VERSION-DEPENDENT] The `route get default` / `ifconfig` parsing below
-is written against macOS 13-15's known output format. There's no macOS
-box available in this environment to verify it against -- treat the
-macOS path as unverified until it's run on real hardware. The
-detected value is always shown to the user for confirmation before
-vectis acts on it (see cli.py), specifically because a laptop with
-Wi-Fi + VPN + hotspot interfaces up at once can make "the active
-interface" ambiguous.
-"""
 from __future__ import annotations
 
 import ipaddress

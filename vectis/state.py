@@ -1,11 +1,4 @@
-"""Local JSON state store shared by every vectis module.
 
-This is the only coupling point between modules: no module calls
-another module's Python objects directly, they only read/write this
-file. That's what makes the modules self-sufficient -- a log follower
-crashing on a decode error can't take fault injection down with it,
-because there's no shared process state to corrupt.
-"""
 from __future__ import annotations
 
 import json

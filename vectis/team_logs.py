@@ -1,18 +1,3 @@
-"""Team-wide log aggregation.
-
-Every configured machine tails its own local sources (the exact same
-follower used by `vectis logs` -- see live_logs._follow) and forwards
-each line to the DNS machine, which appends it to one shared file:
-timestamped, tagged with the source machine's IP and which service the
-line came from. `vectis logs --team`, on any machine, tails that one
-file the same way it tails a local one -- same follower, same
-isolation guarantees, just pointed at a different path. That gives a
-single trailing view across the whole deployment instead of having to
-go machine to machine, the way a hosted platform's log viewer does.
-
-Reuses dashboard.py's ThreadingHTTPServer pattern exactly -- already
-proven to work, no reason to do this differently.
-"""
 from __future__ import annotations
 
 import collections

@@ -1,9 +1,4 @@
-"""Edge role -- reverse proxy, TLS termination, load balancing.
 
-Needs both backends' IPs to build the nginx upstream block. Also owns
-certificate generation and LAN publishing (see certs.py for why cert
-distribution is a plain-HTTP pull rather than Bluetooth or QUIC).
-"""
 from __future__ import annotations
 
 import re

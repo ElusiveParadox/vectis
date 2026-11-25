@@ -1,13 +1,4 @@
-"""Content hosting on the DNS machine.
 
-Available on the DNS role, whether it's running standalone or combined
-with edge (dns_edge). Picking a port that doesn't collide with dnsmasq
-or nginx is the operator's job when the combo is in use.
-
-Binds 0.0.0.0, same as every other service in this project -- so it's
-reachable from Backend A and Backend B (and everyone else) directly
-over the LAN, no routing or proxying through anything else required.
-"""
 from __future__ import annotations
 
 import http.server
@@ -26,11 +17,7 @@ SERVICE_LOG = state.LOG_DIR / "hosted_service.log"
 
 
 def host_static(folder: str, port: int = STATIC_PORT) -> http.server.ThreadingHTTPServer:
-    """Always binds 0.0.0.0, same as every other service in this
-    project -- so both 127.0.0.1 (what check_reachable checks) and
-    this machine's real LAN IP (what other team machines use) reach
-    the same server. No bind_ip parameter: there's nothing meaningful
-    left for a caller to choose once the bind is always 0.0.0.0."""
+
     root = Path(folder).expanduser().resolve()
     if not root.is_dir():
         raise ValueError(f"{root} is not a directory")

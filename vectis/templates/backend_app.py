@@ -1,14 +1,4 @@
-"""Reference backend service. vectis starts this as a subprocess for the
-backend_a / backend_b / backends roles. BACKEND_ID, PORT and (optionally)
-SITE_DIR come from the environment, so one file serves both backends.
 
-Without SITE_DIR: a built-in page (HTML for browsers, JSON for curl).
-With SITE_DIR: that folder is served as a static site instead.
-/api/status and /healthz always exist either way.
-
-Every request is logged as one `key=value` line (see _log_request) --
-vectis trail parses these, so keep the format stable.
-"""
 import html
 import os
 import socket

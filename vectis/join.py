@@ -1,11 +1,4 @@
-"""`vectis join` -- let a Mac that has no vectis role view the app.
 
-Does exactly what a client needs and nothing else: point *.<domain> at
-the team DNS server (/etc/resolver, needs sudo), pull the edge's public
-certificate and trust it, then verify with a real request. It needs the
-vectis package installed on the joining Mac (pip install), but no role,
-no brew formulae and no setup.
-"""
 from __future__ import annotations
 
 import urllib.request

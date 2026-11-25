@@ -1,9 +1,4 @@
-"""DNS role -- also used as the DNS half of the dns_edge combo.
 
-Needs to know the edge machine's IP to point app.<domain> and
-api.<domain> at it. Needs nothing else -- dnsmasq is authoritative for
-this LAN, it doesn't chain to another resolver.
-"""
 from __future__ import annotations
 
 import subprocess

@@ -1,24 +1,4 @@
-"""Team status dashboard.
 
-Every non-DNS role periodically POSTs its own health to the DNS
-machine (push, not pull) -- this avoids the DNS machine needing to
-already know every peer's IP up front; with push, a peer just doesn't
-appear until its first heartbeat lands.
-
-Why DNS hosts this instead of the edge machine: the edge machine is
-the one you're deliberately breaking during failure testing (dead
-backends, killed nginx). If the dashboard lived there, the one moment
-you need to *see* the failure is the moment the dashboard goes dark
-with it. DNS stays reachable through every scenario except "DNS
-service down" itself, so it's the more useful vantage point -- and if
-a second machine ever runs backup DNS, it can run a second aggregator
-the same way, for free.
-
-Access is intentionally unauthenticated plain HTTP: this is an
-internal ops view on a private LAN, not part of the HTTPS service
-being served, so it doesn't need its own cert/trust story. Flagging
-that explicitly rather than leaving it implicit.
-"""
 from __future__ import annotations
 
 import json

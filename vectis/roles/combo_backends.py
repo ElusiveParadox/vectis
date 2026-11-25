@@ -1,5 +1,4 @@
-"""Combo role: both backend instances on one machine, for 2-machine
-teams (paired with DnsEdgeRole on the other machine)."""
+
 from __future__ import annotations
 
 from .backend_role import BackendRole

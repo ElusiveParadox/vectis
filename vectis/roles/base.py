@@ -1,8 +1,4 @@
-"""Common interface every role implements. Roles never import or call
-each other's Python objects except by explicit composition (see
-combo_dns_edge.py, combo_backends.py) -- coordination between
-independently-running machines goes through state.py, not this class.
-"""
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod

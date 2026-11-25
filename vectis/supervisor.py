@@ -1,13 +1,4 @@
-"""Always-on local supervisor.
 
-Independent of *why* a locally-owned service went down -- crashed on
-its own, or was deliberately fault-injected -- this notices and
-restarts it with backoff. fault.py only ever causes a
-failure; it has no retry logic of its own, because this is what makes
-"auto retry to activate it" true for a real crash and an injected one
-identically, rather than needing fault injection to special-case its
-own cleanup.
-"""
 from __future__ import annotations
 
 import subprocess

@@ -1,14 +1,4 @@
-"""Live multi-service log tailing.
 
-Each configured log source gets its own follower thread, feeding a
-single thread-safe queue the main thread renders from -- so output
-from different services never interleaves mid-line. A source whose log
-file doesn't exist yet is reported as "waiting", not a crash, and is
-picked up automatically once the file appears. A source that dies
-mid-stream (bad permissions, binary garbage) reports once and stops --
-it does not take any other source's thread down with it, same
-isolation principle as everywhere else in this codebase.
-"""
 from __future__ import annotations
 
 import queue

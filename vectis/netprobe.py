@@ -1,12 +1,4 @@
-"""Small dependency-free network probes: a DNS A query, and an HTTP(S)
-fetch that reports each phase's timing. Used by health checks, `vectis
-trace` and `vectis join`.
 
-A DNS client is written by hand here (rather than shelling out to dig)
-for two reasons: macOS `dig` ignores /etc/resolver (so it can't tell you
-what a browser would see anyway), and a parsed result is easier to test
-than dig's text output.
-"""
 from __future__ import annotations
 
 import http.client

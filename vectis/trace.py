@@ -1,9 +1,3 @@
-"""`vectis trace` -- follow real requests from THIS machine and show each
-step as the client experiences it: DNS answer, what this Mac's own
-resolver says (the one a browser uses), TCP, TLS, then the HTTP response
-including which backend answered. Complements `vectis trail`, which
-shows the same requests from the servers' side.
-"""
 from __future__ import annotations
 
 import socket

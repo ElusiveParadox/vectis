@@ -1,17 +1,4 @@
-"""Controlled failure injection, gated to server roles.
 
-Menu covers the standard failure scenarios for this topology -- DNS
-down, a backend down, both backends down, a stale DNS record -- not a
-generic "break something" list. Every action either runs locally (this
-machine owns the target service) or is sent as a control command to
-the peer machine that does (see control.py) -- "stop backend A" issued
-from the edge machine has to actually reach the Backend A machine.
-
-This module only ever causes a failure and logs it. Recovery is the
-always-on supervisor (supervisor.py) noticing the service is down and
-restarting it -- there is no retry logic here, deliberately, so a real
-crash and a fault-injected one are recovered identically.
-"""
 from __future__ import annotations
 
 import os

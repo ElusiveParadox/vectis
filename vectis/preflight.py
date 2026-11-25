@@ -1,17 +1,4 @@
-"""Preflight dependency check: verifies (and installs, if missing) the
-Homebrew formulae each role needs before touching any config.
 
-This is deliberately kept separate from each role's own smoke_test().
-"brew formula is installed" and "the resulting DNS record actually
-resolves" are different claims -- collapsing them into one "all tests
-passed" message hides exactly the failure class that matters most
-when something actually breaks.
-
-[VERSION-DEPENDENT] Assumes Homebrew is already installed and `brew`
-is on PATH -- vectis does not bootstrap Homebrew itself. Formula names
-are current as of early-2026 homebrew-core; if one comes back not
-found, check `brew search <name>` for a rename.
-"""
 from __future__ import annotations
 
 import shutil

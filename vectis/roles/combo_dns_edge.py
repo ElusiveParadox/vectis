@@ -1,8 +1,4 @@
-"""Combo role for teams running on 2-3 machines: one machine plays both
-DNS and edge. Pure composition of DnsRole and EdgeRole, no new logic --
-this is the payoff of keeping roles stateless and independent (see
-base.py): combos are free.
-"""
+
 from __future__ import annotations
 
 from .base import Role, SetupResult

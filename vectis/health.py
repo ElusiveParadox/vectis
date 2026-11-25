@@ -1,20 +1,4 @@
-"""Health checking, in two layers.
 
-Monitor -- runs on EVERY machine. Checks the services that machine owns
-(process alive + actually answering), reports them in each heartbeat, and
-emits a `health` event to the team log whenever one changes state (and
-once on first check, which is the "deployed and healthy" line).
-
-Prober -- runs only on the DNS machine. Checks the stack from the outside,
-the way a client sees it: does DNS answer with the edge IP, is the LB up,
-does a request through the LB succeed (and which backend answered), is
-each backend up directly. Also notices when a machine's heartbeat goes
-stale. Results go into dashboard.PROBES and, on change, the team log.
-
-Open-source nginx cannot do active health checks, so this is how "health
-check done" gets real active evidence rather than only nginx's passive
-max_fails marking.
-"""
 from __future__ import annotations
 
 import os

@@ -1,11 +1,4 @@
-"""Backend role (A or B, or one half of the `backends` combo).
 
-Runs the bundled reference Flask app (templates/backend_app.py) as a
-subprocess -- not managed by brew services, since it's vectis's own
-code rather than an installed formula. PID is written to state so the
-fault injection can find and kill it, and stdout is redirected to a
-file the logs command can tail.
-"""
 from __future__ import annotations
 
 import subprocess

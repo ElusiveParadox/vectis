@@ -1,7 +1,4 @@
-"""Port preflight: a stale vectis process still holding a port (a setup
-that was Ctrl+C'd or got stuck, or an orphaned backend) causes confusing
-failures -- worst case the smoke test passes against the OLD process.
-Stale vectis processes are stopped; anything else is reported by name."""
+
 from __future__ import annotations
 
 import os
